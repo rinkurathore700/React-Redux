@@ -10,7 +10,19 @@ let reducer=function(oldState,action)
             contacts : [
                 {
                   name:"Rinku",
-                  contact : "9898"
+                  contact : "9990031296"
+                },
+                {
+                  name:"Amit",
+                  contact : "87873038737"
+                },
+                {
+                  name:"Sunil",
+                  contact : "7396393873"
+                },
+                {
+                  name:"Panda",
+                  contact : "9875483798"
                 }
             ],
                 }
@@ -19,6 +31,19 @@ let reducer=function(oldState,action)
     {
       oldState.contacts.push({contact:action.contacts,
         name:action.names});
+         newState={
+             contacts : oldState.contacts,          
+         }
+    }
+
+    if(action.type ==="DELETE_ACTION")
+    {
+        console.log(action);
+    //    console.log(oldState.contacts);
+    if(action.id!=null)
+     oldState.contacts.splice(action.id, 1);
+     // console.log(oldState.contacts);
+
          newState={
              contacts : oldState.contacts,          
          }

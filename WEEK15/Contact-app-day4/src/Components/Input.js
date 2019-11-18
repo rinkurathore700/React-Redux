@@ -10,8 +10,9 @@ class InputComponent extends React.Component
         this.handleClick=this.handleClick.bind(this);
     }
 
-    handleClick()
+    handleClick(e)
     {
+      e.preventDefault();
    let name=document.getElementById("name").value;
    let contact=document.getElementById("contact").value;
 
@@ -20,7 +21,7 @@ class InputComponent extends React.Component
        contacts: contact,
         names : name
    })
-console.log(this.props.contacts)
+
     }
     render()
     {
@@ -34,7 +35,7 @@ console.log(this.props.contacts)
               <label for="exampleInputPassword1">Contact</label>
               <input type="number" className="form-control" id="contact" placeholder="Enter Contact"/>
             </div>       
-            <button  onClick={this.handleClick} className="btn btn-primary">Submit</button>
+            <button  onClick={this.handleClick} className="btn btn-primary">Add Contact</button>
           </form>
         )
         

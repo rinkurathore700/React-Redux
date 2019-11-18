@@ -9,7 +9,7 @@ class AppComponent extends React.Component
     render()
     {
         return (
-            <div>
+            <div className="container-fluid col-md-3">
             <Provider store={mystore}>
                        <Input/>
                        <Display/>

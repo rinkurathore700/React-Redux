@@ -8,13 +8,27 @@ class DisplayComponent extends React.Component
     {
         super(props);
         this.renderContact=this.renderContact.bind(this);
+        this.deleteContact=this.deleteContact.bind(this);
     }
+    deleteContact(event)
+    {
+        let key= event.target.getAttribute("k");
+        console.log(key);
+         this.props.dispatch({
+           type:"DELETE_ACTION",
+           id: key          
+         })
+        }
    renderContact()
    {
-  return this.props.contacts.map(item=>{
+     console.log("called")
+  return this.props.contacts.map((item,index)=>{
     return   ( <tr>
-  <td>{item.name}</td>
-  <td>{item.contact}</td>   
+  <td key={index}>{item.name}</td>
+  <td>{item.contact}</td>
+  <td>
+    <button onClick={this.deleteContact} className=" btn btn-danger btn-sm"  key={index}><span aria-hidden="true">&times;</span></button>
+    </td>   
 </tr>
   )
     })
@@ -22,12 +36,12 @@ class DisplayComponent extends React.Component
     render()
     {
         return (
-        <table className="table table-striped table-dark">
+        <table className="table table-striped">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Contact</th>
-      
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -38,7 +52,7 @@ class DisplayComponent extends React.Component
     }
 }
 
-let Display = connect(StoreMapper)(DisplayComponent)
+let Display = connect(StoreMapper)(DisplayComponent);
 export {
     Display
 }
